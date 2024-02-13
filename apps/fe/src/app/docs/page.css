@@ -1,0 +1,9 @@
+@media screen and (max-width: 900px) {
+    .len-div {
+      display: none;
+    }
+    .r-div {
+      width: 100%;
+    }
+  }
+  

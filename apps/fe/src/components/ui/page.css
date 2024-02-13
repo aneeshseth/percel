@@ -1,0 +1,21 @@
+.typewriter-e {
+    margin-top: -120px;
+  }
+  
+  .typewriter-cursor {
+    display: none;
+  }
+
+  .container-image {
+    margin-top: -60px;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .container-image {
+      margin-top: -100px;
+    }
+    .typewriter-e {
+      margin-top: -280px;
+    }
+ }
+  
