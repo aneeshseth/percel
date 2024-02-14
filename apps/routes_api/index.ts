@@ -52,6 +52,9 @@ app.post('/deploy', async (req, res) => {
     return res.json({  url: `http://${projectName}.percelapp`  })
 })
 
+app.get("/", (req, res) => {
+    res.send("hello world!")
+})
 
 
 

@@ -15,6 +15,11 @@ app.use((req, res) => {
     return proxy.web(req, res, { target: resolvesTo, changeOrigin: true })
 })
 
+app.get("/", (req, res) => {
+    res.send("hello world!")
+})
+
+
 proxy.on('proxyReq', (proxyReq, req, res) => {
     const url = req.url;
     if (url === '/')
