@@ -17,7 +17,7 @@ export default function DashboardPage() {
   const [projectName, setProjectName] = useState("")
   async function deploy() {
     if (url == "" ||  projectName == "") return;
-    await axios.post("https://percelapi.aneesh.pro:3001/deploy", {
+    await axios.post("https://percelapi.aneesh.pro/deploy", {
         gitURL: url,
         projectName: projectName
     })
