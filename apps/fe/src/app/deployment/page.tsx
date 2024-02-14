@@ -13,7 +13,7 @@ import axios from 'axios'
 import { useToast } from "@/components/ui/use-toast";
 export default function DashboardPage() {
   const {toast} = useToast()
-  const [url, setUrl] = useState("")
+  const [url, setUrl] = useState("https://github.com/aneeshseth/boilerplatevite.git")
   const [projectName, setProjectName] = useState("")
   async function deploy() {
     if (url == "" ||  projectName == "") return;
