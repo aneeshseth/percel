@@ -6,6 +6,9 @@ A deployment service to deploy ReactJS apps.
 
 This forms the moat of the project.
 
+<img width="1355" alt="image" src="https://res.cloudinary.com/dhxeo4rvc/image/upload/v1707861570/Screen_Shot_2024-02-13_at_1.58.33_PM_zs65by.png">
+<img width="1355" alt="image" src="https://res.cloudinary.com/dhxeo4rvc/image/upload/v1707861570/Screen_Shot_2024-02-13_at_1.59.17_PM_ylkpsa.png">
+
 ## The task it does?
 Clones the Github URL Repo in a Docker container deployed to ECS - Builds the code to generate HTML, CSS, and JS files to be served to the browser - Store those generated files to AWS S3 - all using a Docker container, a triggered .sh file from the container, and an index.ts which adds the built files to S3.
 
@@ -14,9 +17,6 @@ This architecture allows for fairly high security since the arbitrary code is bu
 
 ## Can this scale?
 Yes. The deployment service running on ECS containers can allow as many containers to be created as needed through AWS Autoscaling, hence scalable.
-
-<img width="1355" alt="image" src="https://res.cloudinary.com/dhxeo4rvc/image/upload/v1707861570/Screen_Shot_2024-02-13_at_1.58.33_PM_zs65by.png">
-<img width="1355" alt="image" src="https://res.cloudinary.com/dhxeo4rvc/image/upload/v1707861570/Screen_Shot_2024-02-13_at_1.59.17_PM_ylkpsa.png">
 
 # Generating Logs during Builds
 
