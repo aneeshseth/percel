@@ -49,7 +49,7 @@ app.post('/deploy', async (req, res) => {
 
     await ecsClient.send(command);
 
-    return res.json({  url: `http://${projectName}.percelapp`  })
+    return res.json({  url: `http://${projectName}.percel100x.aneesh.pro`  })
 })
 
 app.get("/", (req, res) => {

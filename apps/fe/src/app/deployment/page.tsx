@@ -16,15 +16,12 @@ export default function DashboardPage() {
   const [url, setUrl] = useState("")
   const [projectName, setProjectName] = useState("")
   async function deploy() {
-    console.log("sjh")
     if (url == "" ||  projectName == "") return;
-    console.log("depl")
-    const res = await axios.post("http://localhost:3001/deploy", {
+    await axios.post("https://percelapi.aneesh.pro/deploy", {
         gitURL: url,
         projectName: projectName
     })
-    const data = await res.data;
-    alert(`deployment queued! you can access it on ${data.url} in about a 70 seconds.`)
+    alert(`deployment queued! you can access it on http://${projectName}.percel100x.aneesh.pro in about a 70 seconds.`)
   }
   return (
     <div>
