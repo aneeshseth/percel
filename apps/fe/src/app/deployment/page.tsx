@@ -26,7 +26,7 @@ export default function DashboardPage() {
   return (
     <div>
       <div className="flex-col md:flex justify-center w-screen">
-        <div className="flex-1 space-y-4 p-8 pt-6">
+        <div className="flex-1 space-y-4 pt-6">
           <div className="flex w-screen justify-center items-center h-screen -mt-24">
           <Tabs defaultValue="overview" className="space-y-4">
             <TabsContent value="overview" className="space-y-4">
