@@ -1,81 +1,40 @@
-# Turborepo starter
+# Distributed Deployment Service
 
-This is an official starter Turborepo.
+A deployment service to deploy ReactJS apps.
 
-## Using this example
+# AWS ECS Containers
 
-Run the following command:
+This forms the moat of the project.
 
-```sh
-npx create-turbo@latest
-```
+## The task it does?
+Clones the Github URL Repo in a Docker container deployed to ECS - Builds the code to generate HTML, CSS, and JS files to be served to the browser - Store those generated files to AWS S3 - all using a Docker container, a triggered .sh file from the container, and an index.ts which adds the built files to S3.
 
-## What's inside?
+## Why does this work?
+This architecture allows for fairly high security since the arbitrary code is built in a Containerized Docker env on the Cloud, and the functions to send those files to S3 also happen on those independent containers.
 
-This Turborepo includes the following packages/apps:
+## Can this scale?
+Yes. The deployment service running on ECS containers can allow as many containers to be created as needed through AWS Autoscaling, hence scalable.
 
-### Apps and Packages
+<img width="1355" alt="image" src="https://res.cloudinary.com/dhxeo4rvc/image/upload/v1707861570/Screen_Shot_2024-02-13_at_1.58.33_PM_zs65by.png">
+<img width="1355" alt="image" src="https://res.cloudinary.com/dhxeo4rvc/image/upload/v1707861570/Screen_Shot_2024-02-13_at_1.59.17_PM_ylkpsa.png">
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `@repo/ui`: a stub React component library shared by both `web` and `docs` applications
-- `@repo/eslint-config`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `@repo/typescript-config`: `tsconfig.json`s used throughout the monorepo
+# Generating Logs during Builds
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+This is a feature that is to be added. Here's how I'd do it.
 
-### Utilities
+## The task it does?
+The task is to generate Logs how vercel does for when the project is being build and deployed to AWS.
 
-This Turborepo has some additional tools already setup for you:
+## How would I do it?
+Firstly, since I'd have to generate logs in real-time, I would use WebSockets - a Real-Time protocol, and Redis, for real-time streaming of data for that user.
 
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
+## But how would I use Redis and WebSockets?
+I would first create a WebSocket connection between the User and the server when routed to the deployments page. On pressing the deploy button, I would additionaly trigger a WebSocket event for the user to be subscribed to the ProjectID in Redis, and store their websocket object in a HashMap on the server with the key being the project name.
 
-### Build
+The build command, even though running on a Docker container on AWS is excecuted in a typescript file within that container architecture, which means that I could just publish the log generated to the redis projectID from that build command that was running using exec in the Typescript file using p.stdout?.on("data", function).
 
-To build all apps and packages, run the following command:
+This log would then be recieved by a Redis callback for that projectID on the server, from where their WS object will be obtained, and sent to the designated client, and displayed in the browser.
 
-```
-cd my-turborepo
-pnpm build
-```
+<img width="1355" alt="image" src="https://images.ctfassets.net/ee3ypdtck0rk/0mExYcxsnzccWxnktAKjc/33a49e1e736a2f906216d630b84fb641/websockets.png?w=1840&h=745&q=50&fm=png">
+<img width="1355" alt="image" src="https://avatars.githubusercontent.com/u/1529926?s=200&v=4">
 
-### Develop
-
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm dev
-```
-
-### Remote Caching
-
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-npx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
