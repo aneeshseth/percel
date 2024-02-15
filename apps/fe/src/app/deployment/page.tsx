@@ -17,9 +17,10 @@ export default function DashboardPage() {
   const [projectName, setProjectName] = useState("")
   async function deploy() {
     if (url == "" ||  projectName == "") return;
+    setProjectName(projectName.replace(/\s/g, ""))
     await axios.post("https://percelapi.aneesh.pro/deploy", {
         gitURL: url,
-        projectName: projectName
+        projectName: projectName.replace(/\s/g, "")
     })
     alert(`http://${projectName}.percel100x.aneesh.pro (takes between 120s and 200s to deploy.)`)
   }
