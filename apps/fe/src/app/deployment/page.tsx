@@ -22,7 +22,7 @@ export default function DashboardPage() {
         gitURL: url,
         projectName: projectName.replace(/\s/g, "")
     })
-    alert(`http://${projectName}.percel100x.aneesh.pro (takes between 120s and 200s to deploy.)`)
+    alert(`http://${projectName.replace(/\s/g, "")}.percel100x.aneesh.pro (takes between 120s and 200s to deploy.)`)
   }
   return (
     <div>
