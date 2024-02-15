@@ -21,7 +21,7 @@ export default function DashboardPage() {
         gitURL: url,
         projectName: projectName
     })
-    alert(`deployment queued! you can access it on http://${projectName}.percel100x.aneesh.pro in about a 70 seconds.`)
+    alert(`http://${projectName}.percel100x.aneesh.pro (takes between 120s and 200s to deploy.)`)
   }
   return (
     <div>
