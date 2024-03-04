@@ -74,9 +74,6 @@ export default function TypewriterEffectDemo() {
         titleComponent={
           <div className="">
             <TypewriterEffect words={words} className="text-4xl" />
-            <h3 className="mt-8 scroll-m-20 text-2xl font-semibold tracking-tight mb-20">
-            ❤️ developed by aneesh.seth@sjsu.edu
-            </h3>
           </div>
         }
       />
