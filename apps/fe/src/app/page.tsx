@@ -72,7 +72,7 @@ export default function TypewriterEffectDemo() {
       <ContainerScroll
         users={users}
         titleComponent={
-          <div className="">
+          <div className="-mt-20">
             <TypewriterEffect words={words} className="text-4xl" />
           </div>
         }
