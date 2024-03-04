@@ -8,6 +8,18 @@ import Component2 from "./components/doc2";
 import Component3 from "./components/doc3";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetDescription,
+  SheetFooter,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet"
 
 export default function SettingsProfilePage() {
   const [isCreate, setIsCreate] = useState<boolean>(false);
@@ -20,7 +32,14 @@ export default function SettingsProfilePage() {
         <div className="w-3/12 flex flex-col gap-3 border-neutral-800 border-2 rounded-xl len-div">
           <div className="mt-10">
             <h2 className="scroll-m-20 border-b pb-3 text-2xl font-mono  transition-colors first:mt-0 text-center">
-              Microservices
+            <Button
+              className="bg-blue-500 text-white mb-5"
+              onClick={() => {
+                router.push("/deployment")
+              }}
+            >
+              try deploying
+            </Button>
             </h2>
           </div>
           <div
@@ -80,6 +99,35 @@ export default function SettingsProfilePage() {
             {isUpload && (
                 <Component3/>
             )}
+        </div>
+        <div className="absolute top-10 right-8 md:hidden">
+        <Sheet>
+      <SheetTrigger asChild>
+        <Button variant="outline">-</Button>
+      </SheetTrigger>
+      <SheetContent>
+        <SheetHeader>
+          <SheetTitle>change tab:</SheetTitle>
+        </SheetHeader>
+        <div className="grid gap-4 py-4">
+          <Button onClick={() => {
+              setIsCreate(false);
+              setIsUpdate(true);
+              setIsUpload(false);
+            }}>AWS ECS Containers</Button>
+          <Button onClick={() => {
+              setIsCreate(true);
+              setIsUpdate(false);
+              setIsUpload(false);
+            }}>API Service</Button>
+          <Button onClick={() => {
+              setIsCreate(false);
+              setIsUpdate(false);
+              setIsUpload(true);
+            }}>Runtime Logs</Button>
+        </div>
+      </SheetContent>
+    </Sheet>
         </div>
       </div>
     </>
