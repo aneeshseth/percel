@@ -1,135 +1,114 @@
 "use client";
-import { Separator } from "@/components/ui/separator";
-import { ProfileForm } from "@/app/docs/profile-form";
+import { ContainerScroll } from "@/components/ui/container-scroll-animation";
+import {
+  Menu,
+  MenuItem,
+  HoveredLink,
+  ProductItem,
+} from "@/components/ui/navbar-menu";
+import { TypewriterEffect } from "@/components/ui/typewriter-effect";
+import { cn } from "@/utils/cn";
+import { useRef, useState } from "react";
 import "./page.css";
-import { useState } from "react";
-import Component from "./components/doc1";
-import Component2 from "./components/doc2";
-import Component3 from "./components/doc3";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetDescription,
-  SheetFooter,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet"
+export default function TypewriterEffectDemo() {
+  const targetRef = useRef(null);
 
-export default function SettingsProfilePage() {
-  const [isCreate, setIsCreate] = useState<boolean>(false);
-  const [isUpdate, setIsUpdate] = useState<boolean>(true);
-  const [isUpload, setIsUpload] = useState<boolean>(false);
-  const router = useRouter()
+  const words = [
+    {
+      text: "one-click",
+      className:
+        "md:text-5xl lg:text-7xl font-bold inter-var text-red-500 dark:text-red-500 text-center",
+    },
+    {
+      text: "deployment",
+      className:
+         "lg:text-7xl md:text-5xl text-white font-bold inter-var  text-white dark:text-white text-center",
+    },
+    {
+      text: "for",
+      className:
+       "lg:text-7xl md:text-5xl font-bold inter-var text-red-500 text-center",
+    },
+    {
+      text: "React.js",
+      className:
+        "lg:text-7xl md:text-5xl font-bold inter-var text-blue-500 text-center",
+    }
+  ];
+  const users = [
+    {
+      name: "Manu Arora",
+      designation: "Founder, Algochurn",
+      image: "https://picsum.photos/id/10/300/300",
+      badge: "Mentor",
+    },
+  ];
+  const projects = [
+    {
+      title: "Stripe",
+      description:
+        "A technology company that builds economic infrastructure for the internet.",
+      link: "https://stripe.com",
+    },
+  ];
+  const projects2 = [
+    {
+      title: "Netflix",
+      description:
+        "A streaming service that offers a wide variety of award-winning TV shows, movies, anime, documentaries, and more on thousands of internet-connected devices.",
+      link: "https://netflix.com",
+    },
+  ];
+
   return (
-    <>
-      <div className="w-screen h-screen border-2 border-neutral-800 flex rounded-xl p-3">
-        <div className="w-3/12 flex flex-col gap-3 border-neutral-800 border-2 rounded-xl len-div">
-          <div className="mt-10">
-            <h2 className="scroll-m-20 border-b pb-3 text-2xl font-mono  transition-colors first:mt-0 text-center">
-            <Button
-              className="bg-blue-500 text-white mb-5"
-              onClick={() => {
-                router.push("/deployment")
-              }}
-            >
-              try deploying
-            </Button>
-            </h2>
-          </div>
-          <div
-            className="ml-8 mt-10 p-1 mr-2"
-            onClick={() => {
-              setIsCreate(false);
-              setIsUpdate(true);
-              setIsUpload(false);
-            }}
-          >
-            <h3
-              className={`scroll-m-20 text-xl font-normal tracking-tight text-neutral-500 hover:text-white hover:cursor-pointer transform transition-all duration-200 ${isUpdate ? "text-red-500" : ""}`}
-            >
-              AWS ECS Containers
-            </h3>
-          </div>
-          <div
-            className="ml-8 mt-2 p-1 mr-2"
-            onClick={() => {
-              setIsCreate(true);
-              setIsUpdate(false);
-              setIsUpload(false);
-            }}
-          >
-            <h3
-              className={`scroll-m-20 text-xl font-normal tracking-tight text-neutral-500 hover:text-white hover:cursor-pointer transform transition-all duration-200 ${isCreate ? "text-red-500" : ""}`}
-            >
-              API Service
-            </h3>
-          </div>
-          <div
-            className="ml-8 mt-2 p-1 mr-2"
-            onClick={() => {
-              setIsCreate(false);
-              setIsUpdate(false);
-              setIsUpload(true);
-            }}
-          >
-            <h3
-              className={`scroll-m-20 text-xl font-normal tracking-tight text-neutral-500 hover:text-white hover:cursor-pointer transform transition-all duration-200 ${isUpload ? "text-red-500" : ""}`}
-            >
-              Runtime Logs
-            </h3>
-          </div>
-          <div
-            className="ml-8 mt-2 p-1 mr-2 justify-center w-full"
-          >
-          </div>
-        </div>
-        <div className="w-9/12 border-neutral-800 rounded-xl border-2 r-div p-2">
-            {isCreate && (
-                <Component/>
-            )}
-            {isUpdate && (
-                <Component2/>
-            )}
-            {isUpload && (
-                <Component3/>
-            )}
-        </div>
-        <div className="absolute top-10 right-8 md:hidden">
-        <Sheet>
-      <SheetTrigger asChild>
-        <Button variant="outline">-</Button>
-      </SheetTrigger>
-      <SheetContent>
-        <SheetHeader>
-          <SheetTitle>change tab:</SheetTitle>
-        </SheetHeader>
-        <div className="grid gap-4 py-4">
-          <Button onClick={() => {
-              setIsCreate(false);
-              setIsUpdate(true);
-              setIsUpload(false);
-            }}>AWS ECS Containers</Button>
-          <Button onClick={() => {
-              setIsCreate(true);
-              setIsUpdate(false);
-              setIsUpload(false);
-            }}>API Service</Button>
-          <Button onClick={() => {
-              setIsCreate(false);
-              setIsUpdate(false);
-              setIsUpload(true);
-            }}>Runtime Logs</Button>
-        </div>
-      </SheetContent>
-    </Sheet>
+    <div className="fadeInUp-animation">
+      <div className="bg-black">
+        <div className="flex items-center mt-14 bg-black">
+          <Navbar currRef={targetRef} className="bg-black" />
         </div>
       </div>
-    </>
+      <ContainerScroll
+        users={users}
+        titleComponent={
+          <div className="-mt-96 sm:-mt-0">
+            <TypewriterEffect words={words} className="text-4xl mb-20" />
+          </div>
+        }
+      />
+    </div>
+  );
+}
+
+function Navbar({ className, currRef }: { className?: string; currRef?: any }) {
+  const [active, setActive] = useState<string | null>(null);
+  const router = useRouter();
+  return (
+    <div className="ml-5 mr-5 text-white">
+      <div
+        className={cn(
+          "fixed top-10 inset-x-0 max-w-52 mx-auto z-50 rounded-full",
+          className
+        )}
+      >
+        <Menu setActive={setActive}>
+          <div className="flex gap-3">
+            <Button
+              className="bg-white text-xl hover:bg-white max-w-52"
+              onClick={() => {
+                router.push("/docs");
+              }}
+            >
+              <MenuItem
+                setActive={setActive}
+                active={active}
+                item="deploy"
+              ></MenuItem>
+            </Button>
+          </div>
+        </Menu>
+      </div>
+    </div>
   );
 }
