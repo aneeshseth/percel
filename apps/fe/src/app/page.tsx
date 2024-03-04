@@ -19,22 +19,22 @@ export default function TypewriterEffectDemo() {
     {
       text: "one-click",
       className:
-        "md:text-5xl lg:text-7xl font-bold inter-var text-red-500 dark:text-red-500 text-center",
+        "md:text-5xl lg:text-7xl font-bold inter-var text-red-500 dark:text-red-500 text-center -mt-16",
     },
     {
       text: "deployment",
       className:
-         "lg:text-7xl  text-white font-bold inter-var  text-white dark:text-white text-center",
+         "lg:text-7xl  text-white font-bold inter-var  text-white dark:text-white text-center -mt-16",
     },
     {
       text: "for",
       className:
-       "lg:text-7xl font-bold inter-var text-red-500 text-center",
+       "lg:text-7xl font-bold inter-var text-red-500 text-center -mt-16",
     },
     {
       text: "React.js",
       className:
-        "lg:text-7xl font-bold inter-var text-blue-500 text-center",
+        "lg:text-7xl font-bold inter-var text-blue-500 text-center -mt-16",
     }
   ];
   const users = [
