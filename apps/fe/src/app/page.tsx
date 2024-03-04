@@ -19,22 +19,22 @@ export default function TypewriterEffectDemo() {
     {
       text: "one-click",
       className:
-        "md:text-5xl lg:text-7xl font-bold inter-var text-red-500 dark:text-red-500 text-center -mt-16",
+        "md:text-5xl lg:text-7xl font-bold inter-var text-red-500 dark:text-red-500 text-center",
     },
     {
       text: "deployment",
       className:
-         "lg:text-7xl  text-white font-bold inter-var  text-white dark:text-white text-center -mt-16",
+         "lg:text-7xl  text-white font-bold inter-var  text-white dark:text-white text-center",
     },
     {
       text: "for",
       className:
-       "lg:text-7xl font-bold inter-var text-red-500 text-center -mt-16",
+       "lg:text-7xl font-bold inter-var text-red-500 text-center",
     },
     {
       text: "React.js",
       className:
-        "lg:text-7xl font-bold inter-var text-blue-500 text-center -mt-16",
+        "lg:text-7xl font-bold inter-var text-blue-500 text-center",
     }
   ];
   const users = [
@@ -72,8 +72,8 @@ export default function TypewriterEffectDemo() {
       <ContainerScroll
         users={users}
         titleComponent={
-          <div className="-mt-20">
-            <TypewriterEffect words={words} className="text-4xl -mt-16" />
+          <div>
+            <TypewriterEffect words={words} className="text-4xl mb-20" />
           </div>
         }
       />
