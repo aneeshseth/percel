@@ -125,6 +125,14 @@ export default function SettingsProfilePage() {
               setIsUpdate(false);
               setIsUpload(true);
             }}>Runtime Logs</Button>
+           <Button
+              className="bg-blue-500 text-white mb-5"
+              onClick={() => {
+                router.push("/deployment")
+              }}
+            >
+              try deploying
+            </Button>
         </div>
       </SheetContent>
     </Sheet>
