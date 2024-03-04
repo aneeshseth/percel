@@ -73,7 +73,7 @@ export default function TypewriterEffectDemo() {
         users={users}
         titleComponent={
           <div className="-mt-20">
-            <TypewriterEffect words={words} className="text-4xl" />
+            <TypewriterEffect words={words} className="text-4xl -mt-16" />
           </div>
         }
       />
