@@ -1,6 +1,6 @@
 # Distributed Deployment Service
 
-A deployment service to deploy ReactJS apps.
+A deployment service to deploy frontend applications in a single click.
 
 # AWS ECS Containers
 
